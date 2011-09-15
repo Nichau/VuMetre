@@ -2,6 +2,8 @@
 #define AUDIOINPUT_H
 
 #include <QObject>
+class QAudioInput;
+class QFile;
 
 class AudioInput : public QObject
 {
@@ -12,6 +14,12 @@ public:
 signals:
 
 public slots:
+    void stopRecording();
+
+private:
+    QAudioInput *audio;
+    QFile *outputFile;
+
 
 };
 

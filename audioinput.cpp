@@ -2,12 +2,15 @@
 #include <QAudioInput>
 #include <QAudioFormat>
 #include <QTimer>
+#include <QDebug>
+#include <QFile>
 
 AudioInput::AudioInput(QObject *parent) :
     QObject(parent)
 {
-   outputFile.setFileName("/tmp/test.raw");
-   outputFile.open( QIODevice::WriteOnly | QIODevice::Truncate );
+   QFile outputFile;
+   outputFile.setFileName("/test.raw");
+   //outputFile.open( QIODevice::WriteOnly | QIODevice::Truncate );
 
    QAudioFormat format;
    // set up the format you want, eg.
@@ -28,4 +31,11 @@ AudioInput::AudioInput(QObject *parent) :
    QTimer::singleShot(3000, this, SLOT(stopRecording()));
    audio->start(&outputFile);
    // Records audio for 3000ms
+ }
+
+void AudioInput::stopRecording()
+ {
+   audio->stop();
+   //outputFile->close();
+   delete audio;
  }
