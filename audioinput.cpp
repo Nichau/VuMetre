@@ -9,8 +9,8 @@ AudioInput::AudioInput(QObject *parent) :
     QObject(parent)
 {
    QFile outputFile;
-   outputFile.setFileName("/test.raw");
-   //outputFile.open( QIODevice::WriteOnly | QIODevice::Truncate );
+   outputFile.setFileName("/Users/draz63/Code/QtQuick/VuMetre3/VuMetre3/test.raw");
+   outputFile.open( QIODevice::WriteOnly | QIODevice::Truncate );
 
    QAudioFormat format;
    // set up the format you want, eg.
@@ -28,7 +28,7 @@ AudioInput::AudioInput(QObject *parent) :
    }
 
    audio = new QAudioInput(format, this);
-   QTimer::singleShot(3000, this, SLOT(stopRecording()));
+   //QTimer::singleShot(3000, this, SLOT(stopRecording()));
    audio->start(&outputFile);
    // Records audio for 3000ms
  }
@@ -36,6 +36,6 @@ AudioInput::AudioInput(QObject *parent) :
 void AudioInput::stopRecording()
  {
    audio->stop();
-   //outputFile->close();
+   outputFile->close();
    delete audio;
  }

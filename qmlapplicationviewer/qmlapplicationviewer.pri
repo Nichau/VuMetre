@@ -5,8 +5,7 @@
 # It is recommended not to modify this file, since newer versions of Qt Creator
 # may offer an updated version of it.
 
-QT += declarative \
-        multimedia
+QT += declarative
 
 SOURCES += $$PWD/qmlapplicationviewer.cpp
 HEADERS += $$PWD/qmlapplicationviewer.h

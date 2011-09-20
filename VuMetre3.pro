@@ -36,3 +36,5 @@ HEADERS += \
     anchor.h \
     vumetredemo.h \
     audioinput.h
+
+QT += multimedia
